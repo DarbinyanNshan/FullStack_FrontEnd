@@ -10,14 +10,12 @@ import {
     useDisclosure,
 } from '@chakra-ui/react'
 import CreateTask from "./CreatTask"
-import { useAuth } from "../contexts/AuthContexts"
 
 export default function Board() {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const { user } = useAuth()
     const [task, setTask] = useState([])
     useEffect(() => {
-        axios.get(`http://localhost:3001/users/${user._id}/tasks`,
+        axios.get(`http://localhost:3001/users/user._id/tasks`,
             {
                 headers: {
                     'x-access-token': localStorage.getItem('token')

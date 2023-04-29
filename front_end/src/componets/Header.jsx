@@ -29,10 +29,6 @@ export default function Header() {
         <NavLink to='/'>
         </NavLink> : null}
 
-      <NavLink to='/board'>
-      </NavLink>
-
-
       {role === "Admin" ?
         <Box
           ml={'200px'}
@@ -42,8 +38,14 @@ export default function Header() {
             mr={'20px'}>
             <NavLink to='/add-user'>
               Add User
-            </NavLink></Box>
-
+            </NavLink>
+          </Box>
+          <Box
+            mr={'20px'}>
+            <NavLink to='/users'>
+              Users
+            </NavLink>
+          </Box>
           <NavLink to='/board'>
             Board
           </NavLink>

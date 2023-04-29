@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Board from "./pages/Board";
 import AddUser from "./pages/AddUser";
 import { AuthProvider } from "./contexts/AuthContexts";
+import Users from "./pages/Users";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/' element={<SignIn />} />
           <Route path='/board' element={<Board />} />
           <Route path='/add-user' element={<AddUser />} />
+          <Route path='/users' element={<Users />} />
         </Routes>
       </AuthProvider>
     </ChakraProvider>
