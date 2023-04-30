@@ -1,25 +1,28 @@
-import Header from "./componets/Header";
-import SignIn from "./pages/Signin";
-import { ChakraProvider } from '@chakra-ui/react'
-import { Route, Routes } from "react-router-dom";
-import Board from "./pages/Board";
-import AddUser from "./pages/AddUser";
-import { AuthProvider } from "./contexts/AuthContexts";
-import Users from "./pages/Users";
+import { Route, Routes } from 'react-router-dom';
+import { Login } from './pages/login/login';
+import { Header } from './componets/header';
+import { useAuth } from './componets/contexts/AuthContexts';
+import { Task } from './pages/board/board';
 
 function App() {
+  const { user } = useAuth()
+
   return (
-    <ChakraProvider>
-      <AuthProvider>
-        <Header />
+    <>
+      {user ?
+        <>
+          <Header />
+          <Routes>
+            <Route path="/board" element={<Task />} />
+
+            <Route path="/*" element={<Task />} />
+          </Routes>
+        </> :
         <Routes>
-          <Route path='/' element={<SignIn />} />
-          <Route path='/board' element={<Board />} />
-          <Route path='/add-user' element={<AddUser />} />
-          <Route path='/users' element={<Users />} />
+          <Route path="*" element={<Login />} />
         </Routes>
-      </AuthProvider>
-    </ChakraProvider>
+      }
+    </>
   );
 }
 
